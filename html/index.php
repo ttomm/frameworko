@@ -1,36 +1,32 @@
 <?php
 /** @TODO wydzielić do Routera i do Application->Run() 
-   dodać autoloader
 */
 
-function autoloader($class) {
-    foreach (explode(';', get_include_path()) as $path) {
-        echo 'auto ' .$path . $class . '.php';
-        if (is_file($path . $class . '.php')) {
-            
-            require_once $path . $class . '.php';
-            echo '<br>require ' . $path . $class . '.php';
-        }
-    }
-}
-
+// set path to ROOT DIRECTORY
 define('ROOT_PATH', realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
+
 echo ROOT_PATH;
 echo '<pre>';
 print_r($_SERVER);
 echo '</pre>';
-echo '<pre>';
-set_include_path(ROOT_PATH . 'app' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR);
+echo 'Include path<pre>';
+set_include_path(implode(PATH_SEPARATOR, array( 
+    ROOT_PATH . 'app' . DIRECTORY_SEPARATOR . 'controllers', 
+    get_include_path()
+)));
 print_r(get_include_path());
 echo '</pre>';
 
-echo '<pre>';
+require_once './lib/Autoloader.php';
+spl_autoload_register(array('Autoloader', 'load'));
 
-spl_autoload_register('autoloader');
+$application = new lib\Application();
+$application->run();
+
+echo '<pre>';
 
 $requestUriParts = array();
 $requestUri = trim(filter_input(INPUT_SERVER, 'REQUEST_URI'), '\\/');
-
 
 /*@TODO tutaj zamiast index można podstawić domyślny controller
  i domyślną akcję z configa */
@@ -64,10 +60,3 @@ $controllerObject = new $controllerName;
 $actionName = ucfirst($requestUriParts[1]) . 'Action';
 
 call_user_func(array($controllerObject, $actionName));
-
-
-
-
-
-
-
