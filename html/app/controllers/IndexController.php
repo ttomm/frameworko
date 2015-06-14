@@ -6,15 +6,19 @@
  * and open the template in the editor.
  */
 
-//namespace App\Controllers;
+namespace App\Controllers;
 
 /**
  * Description of IndexController
  *
  * @author Tomek
  */
-class IndexController 
+class IndexController extends \Lib\BaseController
 {
+    public function init()
+    {
+        echo "Funkcja init<br/>";
+    }
     public function IndexAction()
     {
         echo 'Uruchomiony Index controleer i akcja Index';

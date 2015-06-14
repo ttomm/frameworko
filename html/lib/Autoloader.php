@@ -12,7 +12,7 @@ class Autoloader
         $relativeFilePath = DIRECTORY_SEPARATOR . str_replace('\\', DIRECTORY_SEPARATOR, $className) . '.php';
         
         foreach (explode(';', get_include_path()) as $path) {
-            //echo 'auto ' .$path . $relativeFilePath . '<br />';
+            echo 'auto ' .$path . $relativeFilePath . '<br />';
             if (file_exists($path . $relativeFilePath)) {
                 require_once $path . $relativeFilePath;                
                 return;

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Purl;
+namespace Vendor\Purl;
 
 use Pdp\PublicSuffixListManager;
 use Pdp\Parser as PslParser;

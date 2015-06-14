@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Purl;
+namespace Vendor\Purl;
 
 /**
  * AbstractPart class is implemented by each part of a Url where necessary.
