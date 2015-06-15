@@ -35,9 +35,7 @@ class Application
         // get action to run
         $routeParams = $this->_router->getRoute();  //<- zwraca tablicę ('action' => $action, 'controller' => $controller
         $controllerObject = new $routeParams['controllerName']();
-        echo '<pre>';
-        print_r($routeParams);
-        echo '</pre>';
-        call_user_func(array($controllerObject, new $routeParams['actionName']));
+        
+        call_user_func(array($controllerObject, $routeParams['actionName']));
     }
 }
