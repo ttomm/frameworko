@@ -6,12 +6,13 @@
  * and open the template in the editor.
  */
 
+namespace Lib\Router;
+
 /**
- * Description of RouterSimple
  *
  * @author Tomek
  */
-class RouterSimple implements IRouter
-{
-    //put your code here
+interface IRouter 
+{    
+    public function getRoute();
 }
