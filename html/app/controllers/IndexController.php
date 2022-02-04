@@ -10,10 +10,6 @@ use Lib\Img as Img;
  */
 class IndexController extends \Lib\BaseController
 {
-    public function init()
-    {
-        // init
-    }
     public function IndexAction()
     {
         $image = new Img\Image('c:/zdjecia/PW680141.jpg');
