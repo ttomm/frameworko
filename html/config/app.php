@@ -6,7 +6,7 @@ return array (
         'port' => 3306,
         'username' => 'tmyhal',
         'psswd' => 'tmyhal',
-        'dbname' => 'dbname'
+        'dbname' => 'dbaname'
     ),
     'router' => array(
         'defaultController' => 'Index',
